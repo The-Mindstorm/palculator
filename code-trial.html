@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.A.L u.I 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light mode variables */
+            --background-light: url('good.jpeg');
+            --text-color-light: #D76045;
+            --heading-color-light: #F2E8E0;
+            --wrapper-color-light: #D76045;
+            --button-color-light: #F2E8E0;
+            --settings-background-light: #f0f0f0;
+            --settings-text-light: #333;
+            --taskbar-background-light: #f0f0f0;
+            --taskbar-text-light: #333;
+
+            /* Dark mode variables */
+            --background-dark: #1a1a1a;
+            --text-color-dark: #ffffff;
+            --heading-color-dark: #ffffff;
+            --wrapper-color-dark: #2a2a2a;
+            --button-color-dark: #444444;
+            --settings-background-dark: #333;
+            --settings-text-dark: #eee;
+            --taskbar-background-dark: #333;
+            --taskbar-text-dark: #eee;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: var(--background-dark);
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: var(--text-color-dark);
+            transition: background 0.3s, color 0.3s;
+            position: relative;
+            padding-top: 55px;
+            box-sizing: border-box;
+            justify-content: flex-start;
+            padding-bottom: 0;
+        }
+
+        .taskbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--taskbar-background-dark);
+            color: var(--taskbar-text-dark);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .taskbar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60%;
+            max-width: 600px;
+        }
+
+        .taskbar-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex: 2;
+        }
+
+        .taskbar-links a {
+            color: var(--taskbar-text-dark);
+            text-decoration: none;
+            margin: 0 2px;
+            font-size: 1.4em;
+            font-family: 'IBM Plex Sans', sans-serif;
+            text-align: center;
+        }
+
+        .settings-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex: 1;
+            position: relative;
+            /* Ensure correct positioning of panel */
+        }
+
+        .settings-button {
+            background: none;
+            border: none;
+            color: var(--taskbar-text-dark);
+            font-size: 1.4em;
+            cursor: pointer;
+            padding: 0;
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+
+        .settings-button:focus {
+            outline: none;
+            text-decoration: underline;
+        }
+
+        .settings-panel {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--settings-background-dark);
+            color: var(--settings-text-dark);
+            border: 1px solid #555;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 101;
+            display: none;
+            min-width: 150px;
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+
+        .settings-panel.open {
+            display: block;
+        }
+
+        .mode-switch-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .mode-switch-container label {
+            font-size: 1em;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 35px;
+            height: 18px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 25px;
+            transition: 0.4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        input:checked+.slider {
+            background-color: #007BFF;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(17px);
+        }
+
+        .wrapper {
+            background-color: var(--wrapper-color-dark);
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s;
+            margin-top: 70px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 60px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: center;
+            color: var(--heading-color-dark);
+            transition: color 0.3s;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .animated-button {
+            background-color: var(--button-color-dark);
+            color: var(--text-color-dark);
+            border: none;
+            width: 300px;
+            height: 200px;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s, color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .animated-button:hover {
+            background-color: #B94E39;
+            transform: scale(1.1);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .animated-button:active {
+            transform: scale(0.95);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .icon {
+            font-size: 50px;
+            color: var(--text-color-light);
+        }
+
+        .toggle-container {
+            display: none;
+        }
+
+        /* Modal styles */
+        #about-modal,
+        #contact-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        #about-modal button,
+        #contact-modal button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="taskbar">
+        <div class="taskbar-container">
+            <div class="taskbar-links">
+                <a href="#">Home</a>
+                <a href="#" onclick="showContactModal()">Contact</a>
+                <a href="#" onclick="showAboutModal()">About</a>
+            </div>
+            <div class="settings-container">
+                <button class="settings-button">Settings</button>
+                <div class="settings-panel">
+                    <div class="mode-switch-container">
+                        <label for="mode-switch">Mode</label>
+                        <label class="switch">
+                            <input type="checkbox" id="mode-switch">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <h1>P.A.L - Precision AI Logic</h1>
+        <div class="button-container">
+            <a href="physics.html" class="animated-button">
+                <div class="icon">⚛️</div>
+                <div>Physics</div>
+            </a>
+            <a href="algebra.html" class="animated-button">
+                <div class="icon">🧮</div>
+                <div>Algebra</div>
+            </a>
+            <a href="arithmetic.html" class="animated-button">
+                <div class="icon">➕</div>
+                <div>Arithmetics</div>
+            </a>
+            <a href="statistics.html" class="animated-button">
+                <div class="icon">∫</div>
+                <div>Statistics</div>
+            </a>
+            <a href="mental%20ability.html" class="animated-button">
+                <div class="icon">🧠</div>
+                <div>Mental Ability</div>
+            </a>
+            <a href="geometry.html" class="animated-button">
+                <div class="icon">📐</div>
+                <div>Geometry</div>
+            </a>
+        </div>
+    </div>
+    <div class="toggle-container">
+        <label for="mode-switch">Mode</label>
+        <label class="switch">
+            <input type="checkbox" id="old-mode-switch" style="display:none;">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div id="about-modal">
+        <p>Made by Chahel, Ayush and Siddhu pagi</p>
+        <button onclick="hideAboutModal()">Close</button>
+    </div>
+
+    <div id="contact-modal">
+        <p>Email: pac.by.acs@gmail.com</p>
+        <button onclick="hideContactModal()">Close</button>
+    </div>
+
+    <script>
+        const modeSwitch = document.getElementById('mode-switch');
+        const oldModeSwitch = document.getElementById('old-mode-switch');
+        const wrapper = document.querySelector('.wrapper');
+        const buttons = document.querySelectorAll('.animated-button');
+        const heading = document.querySelector('h1');
+        const taskbar = document.querySelector('.taskbar');
+        const taskbarLinks = document.querySelector('.taskbar-links');
+        const settingsButton = document.querySelector('.settings-button');
+        const settingsPanel = document.querySelector('.settings-panel');
+        const settingsContainer = document.querySelector('.settings-container');
+        let isDarkMode = false;
+
+        function updateColors() {
+            const taskbarBackgroundColor = isDarkMode ? 'var(--taskbar-background-dark)' : 'var(--taskbar-background-light)';
+            const taskbarTextColor = isDarkMode ? 'var(--taskbar-text-dark)' : 'var(--taskbar-text-light)';
+            const settingsPanelBackgroundColor = isDarkMode ? 'var(--settings-background-dark)' : 'var(--settings-background-light)';
+            const settingsPanelTextColor = isDarkMode ? 'var(--settings-text-dark)' : 'var(--settings-text-light)';
+            const bodyBackgroundColor = isDarkMode ? 'var(--background-dark)' : 'var(--background-light)';
+            const bodyTextColor = isDarkMode ? 'var(--text-color-dark)' : 'var(--text-color-light)';
+            const wrapperBackgroundColor = isDarkMode ? 'var(--wrapper-color-dark)' : 'var(--wrapper-color-light)';
+            const headingColor = isDarkMode ? 'var(--heading-color-dark)' : 'var(--heading-color-light)';
+            const buttonBackgroundColor = isDarkMode ? 'var(--button-color-dark)' : 'var(--button-color-light)';
+            const buttonTextColor = isDarkMode ? 'var(--text-color-dark)' : 'var(--text-color-light)';
+            const settingsButtonColor = isDarkMode ? 'var(--taskbar-text-dark)' : 'var(--taskbar-text-light)';
+
+            document.body.style.background = bodyBackgroundColor;
+            document.body.style.color = bodyTextColor;
+            wrapper.style.backgroundColor = wrapperBackgroundColor;
+            buttons.forEach(button => {
+                button.style.backgroundColor = buttonBackgroundColor;
+                button.style.color = buttonTextColor;
+            });
+            heading.style.color = headingColor;
+            taskbar.style.backgroundColor = taskbarBackgroundColor;
+            taskbar.style.color = taskbarTextColor;
+            const links = taskbarLinks.querySelectorAll('a');
+            links.forEach(link => {
+                link.style.color = taskbarTextColor;
+            });
+            settingsPanel.style.backgroundColor = settingsPanelBackgroundColor;
+            settingsPanel.style.color = settingsPanelTextColor;
+            settingsButton.style.color = settingsButtonColor;
+        }
+
+        isDarkMode = oldModeSwitch.checked;
+        modeSwitch.checked = isDarkMode;
+
+        updateColors();
+
+        modeSwitch.addEventListener('change', () => {
+            isDarkMode = !isDarkMode;
+            oldModeSwitch.checked = isDarkMode;
+            updateColors();
+        });
+
+        settingsButton.addEventListener('click', () => {
+            settingsPanel.classList.toggle('open');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!settingsContainer.contains(event.target) && event.target !== settingsButton) {
+                settingsPanel.classList.remove('open');
+            }
+        });
+
+        function showAboutModal() {
+            document.getElementById('about-modal').style.display = 'block';
+        }
+
+        function hideAboutModal() {
+            document.getElementById('about-modal').style.display = 'none';
+        }
+
+        function showContactModal() {
+            document.getElementById('contact-modal').style.display = 'block';
+        }
+
+        function hideContactModal() {
+            document.getElementById('contact-modal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

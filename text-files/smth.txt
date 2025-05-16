@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Physics - P.A.L</title>
+		<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+		<link href="css/physics-style.css" rel="stylesheet" />
+		<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+	</head>
+	<body>
+		<header data-aos="fade-down" data-aos-duration="900">
+			<nav>
+				<a href="index.html" class="logo-link">
+					<div class="logo">P.A.L</div>
+				</a>
+				<div class="nav-links">
+					<a href="physics.html">Physics</a>
+					<a href="algebra.html">Algebra</a>
+					<a href="arithmetic.html">Arithmetics</a>
+					<a href="statistics.html">Statistics</a>
+					<a href="mental%20ability.html">Mental Ability</a>
+					<a href="geometry.html">Geometry</a>
+				</div>
+			</nav>
+			<!-- Add this divider -->
+    		<div class="header-divider"></div>
+			<h1>Physics</h1>
+		</header>
+		<main>
+			<section
+				class="about-physics"
+				data-aos="fade-right"
+				data-aos-duration="1000"
+				data-aos-anchor-placement="top-center"
+				data-aos-delay="200">
+				<h2 data-aos="zoom-in" data-aos-delay="200">About Physics</h2>
+				<p data-aos="fade-up" data-aos-delay="400">
+					Physics is the natural science that studies matter, its motion and
+					behavior through space and time, and the related entities of energy
+					and force.
+				</p>
+			</section>
+			<section
+				class="calculator-container"
+				data-aos="fade-up"
+				data-aos-duration="1000">
+				<h2 data-aos="zoom-in" data-aos-delay="100">Physics Calculators:</h2>
+				<select
+					name="calculators"
+					id="calculators"
+					data-aos="fade-up"
+					data-aos-delay="110"
+					data-aos-once="true">
+					<option value="mechanics-calculator">mechanics calculator</option>
+					<option value="thermodynamics-calculator">
+						thermodynamics calculator
+					</option>
+					<option value="electromagnetism-calculator">
+						electromagnetism calculator
+					</option>
+					<option value="wave-optics-calculator">
+						wave and optics calculator
+					</option>
+					<option value="modern-physics-calculator">
+						modern physics calculator
+					</option>
+					<option value="fluid-physics-calculator">
+						fluid physics calculator
+					</option>
+					<option value="astrophysics-calculator">
+						astrophysics calculator
+					</option>
+					<option value="material-science-calculator">
+						material science calculator
+					</option>
+					<option value="miscellaneous-calculator">
+						miscellaneous calculator
+					</option>
+				</select>
+				<!-- Calculator dropdowns -->
+				<select
+					id="mechanics-dropdown"
+					style="display: none; margin-bottom: 20px"
+					data-aos="fade-up"
+					data-aos-delay="130"
+					data-aos-once="true">
+					<option value="speed">Speed (v = d / t)</option>
+					<option value="force">Force (F = m × a)</option>
+					<option value="work">Work (W = F × d)</option>
+					<option value="kinetic">Kinetic Energy (KE = ½ m v²)</option>
+				</select>
+
+				<!-- Other dropdowns here... -->
+				<select
+					id="thermodynamics-dropdown"
+					style="display: none; margin-bottom: 20px"
+					data-aos="fade-up"
+					data-aos-delay="130"
+					data-aos-once="true">
+					<option value="idealGas">Ideal Gas Law (PV = nRT)</option>
+					<option value="heatTransfer">Heat Transfer (Q = mcΔT)</option>
+					<option value="thermalExpansion">
+						Thermal Expansion (ΔL = αLΔT)
+					</option>
+					<option value="entropy">Entropy Change (ΔS = Q/T)</option>
+				</select>
+
+				<select
+					id="electromagnetism-dropdown"
+					style="display: none; margin-bottom: 20px"
+					data-aos="fade-up"
+					data-aos-delay="130"
+					data-aos-once="true">
+					<option value="coulomb">Coulomb's Law (F = k·q₁·q₂/r²)</option>
+					<option value="efield">Electric Field (E = F/q)</option>
+					<option value="ohms">Ohm's Law (V = IR)</option>
+					<option value="power">Electrical Power (P = IV)</option>
+					<option value="capacitance">Capacitance (C = Q/V)</option>
+					<option value="magneticField">Magnetic Field (B = μ₀I/2πr)</option>
+				</select>
+
+				<select
+					id="wave-optics-dropdown"
+					style="display: none; margin-bottom: 20px"
+					data-aos="fade-up"
+					data-aos-delay="130"
+					data-aos-once="true">
+					<option value="wavelength">Wavelength (λ = v/f)</option>
+					<option value="snell">Snell's Law (n₁sinθ₁ = n₂sinθ₂)</option>
+					<option value="lens">Lens Equation (1/f = 1/d₀ + 1/d₁)</option>
+					<option value="doppler">Doppler Effect (f' = f(v ± v₀)/(v ∓ v₁))</option>
+					<option value="intensity">Intensity (I = P/A)</option>
+					<option value="diffraction">Diffraction Grating (sinθ = mλ/d)</option>
+				</select>
+				<select
+					id="modern-physics-dropdown"
+					style="display: none; margin-bottom: 20px"
+					data-aos="fade-up"
+					data-aos-delay="130"
+					data-aos-once="true">
+					<option value="relativity">Relativity (E = mc²)</option>
+					<option value="timeDilation">Time Dilation (t' = t/√(1-v²/c²))</option>
+					<option value="lengthContraction">Length Contraction (L' = L·√(1-v²/c²))</option>
+					<option value="photoelectric">Photoelectric Effect (E = hf - φ)</option>
+					<option value="deBroglie">De Broglie Wavelength (λ = h/p)</option>
+					<option value="bohrModel">Bohr Model (E = -13.6/n² eV)</option>
+					<option value="radioactive">Radioactive Decay (N = N₀e^(-λt))</option>
+					<option value="compton">Compton Effect (Δλ = h/mc·(1-cosθ))</option>
+				</select>
+				<select
+					id="fluid-physics-dropdown"
+					style="display: none; margin-bottom: 20px"
+					data-aos="fade-up"
+					data-aos-delay="130"
+					data-aos-once="true">
+					<option value="density">Density (ρ = m/V)</option>
+					<option value="pressure">Pressure (P = F/A)</option>
+					<option value="hydrostatic">Hydrostatic Pressure (P = ρgh)</option>
+					<option value="buoyancy">Buoyancy (F_b = ρgV)</option>
+					<option value="bernoulli">Bernoulli's Equation (P₁ + ½ρv₁² + ρgh₁ = P₂ + ½ρv₂² + ρgh₂)</option>
+					<option value="continuity">Continuity Equation (A₁v₁ = A₂v₂)</option>
+					<option value="reynolds">Reynolds Number (Re = ρvL/μ)</option>
+					<option value="poiseuille">Poiseuille's Law (Q = πr⁴ΔP/8ηL)</option>
+					<option value="stokes">Stokes' Law (F_d = 6πηrv)</option>
+					<option value="surfaceTension">Surface Tension (F = γL)</option>
+				</select>
+
+				<select
+					id="variable-dropdown"
+					style="display: none; margin-bottom: 20px"
+					data-aos="fade-up"
+					data-aos-delay="150"
+					data-aos-once="true">
+					<!-- Options will be set dynamically by JS -->
+				</select>
+
+
+
+				<!-- Calculator interface -->
+				<div
+					class="calculator"
+					data-aos="fade-up"
+					data-aos-delay="100"
+					data-aos-once="true">
+					<h3 data-aos="fade-right" data-aos-delay="130" data-aos-once="true">
+						Calculator
+					</h3>
+					<form
+						id="calculator-form"
+						data-aos="fade-left"
+						data-aos-delay="120"
+						data-aos-anchor-placement="top-center"
+						data-aos-once="true">
+						<label
+							for="input1"
+							data-aos="fade-right"
+							data-aos-delay="120"
+							data-aos-once="true"
+							>Input 1:</label
+						>
+						<input
+							type="text"
+							id="input1"
+							name="input1"
+							data-aos="fade-left"
+							data-aos-delay="120"
+							data-aos-once="true" />
+						<label
+							for="input2"
+							data-aos="fade-right"
+							data-aos-delay="120"
+							data-aos-once="true"
+							>Input 2:</label
+						>
+						<input
+							type="text"
+							id="input2"
+							name="input2"
+							data-aos="fade-left"
+							data-aos-delay="120"
+							data-aos-once="true" />
+						<label
+							for="input3"
+							data-aos="fade-right"
+							data-aos-delay="120"
+							data-aos-once="true"
+							style="display: none"
+							>Input 3:</label
+						>
+						<input
+							type="text"
+							id="input3"
+							name="input3"
+							data-aos="fade-left"
+							data-aos-delay="120"
+							data-aos-once="true"
+							style="display: none" />
+						<button
+							type="submit"
+							data-aos="zoom-in"
+							data-aos-delay="120"
+							data-aos-once="true">
+							Calculate
+						</button>
+					</form>
+					<div class="electromagnetism-formula" id="formula-display"></div>
+					<div
+						id="result"
+						data-aos="fade-up"
+						data-aos-delay="200"
+						data-aos-once="true"
+						style="
+							margin-top: 25px;
+							padding: 15px;
+							background-color: #2d2d2d;
+							border-radius: 8px;
+							border-left: 4px solid #d76045;
+							min-height: 1.5em;
+							font-weight: bold;
+							transition: background-color 0.3s ease;
+							opacity: 1;
+							visibility: visible;
+						"></div>
+				</div>
+			</section>
+		</main>
+		<div id="particles-js"></div>
+
+		<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+		<script src="js/physics-calculator.js"></script>
+	</body>
+</html>

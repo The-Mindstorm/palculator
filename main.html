@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>P.A.L - Home</title>
+		<!-- IBM Plex Sans Bold -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&display=swap"
+			rel="stylesheet" />
+		<style>
+			:root {
+				/* Restoring the earlier color theme */
+				--background-light: url('good.jpeg');
+				--text-color-light: #d76045;
+				--heading-color-light: #f2e8e0;
+				--wrapper-color-light: #d76045;
+				--button-color-light: #f2e8e0;
+
+				/* Dark mode variables */
+				--background-dark: #1a1a1a;
+				--text-color-dark: #ffffff;
+				--heading-color-dark: #ffffff;
+				--wrapper-color-dark: #2a2a2a;
+				--button-color-dark: #444444;
+				--button-hover-dark: #b94e39;
+			}
+
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				background: var(--background-dark);
+				color: var(--text-color-dark);
+				transition: all 0.5s ease;
+				animation: fadeIn 1s ease-in;
+				position: relative;
+				overflow-x: hidden;
+			}
+
+			/* Background Animation */
+			.particles {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -1;
+				overflow: hidden;
+			}
+
+			.particle {
+				position: absolute;
+				border-radius: 50%;
+				background: rgba(215, 96, 69, 0.2);
+				animation: float 15s infinite ease-in-out;
+			}
+
+			@keyframes float {
+				0% {
+					transform: translateY(0) translateX(0);
+					opacity: 0;
+				}
+				25% {
+					opacity: 0.5;
+				}
+				50% {
+					transform: translateY(-100px) translateX(100px);
+					opacity: 0.8;
+				}
+				75% {
+					opacity: 0.5;
+				}
+				100% {
+					transform: translateY(0) translateX(0);
+					opacity: 0;
+				}
+			}
+
+			/* Generate 30 particles with different properties */
+			.particle:nth-child(1) {
+				width: 80px;
+				height: 80px;
+				left: 10%;
+				top: 20%;
+				animation-delay: 0s;
+				animation-duration: 20s;
+			}
+			.particle:nth-child(2) {
+				width: 60px;
+				height: 60px;
+				left: 20%;
+				top: 70%;
+				animation-delay: 1s;
+				animation-duration: 25s;
+			}
+			.particle:nth-child(3) {
+				width: 70px;
+				height: 70px;
+				left: 30%;
+				top: 30%;
+				animation-delay: 2s;
+				animation-duration: 18s;
+			}
+			.particle:nth-child(4) {
+				width: 50px;
+				height: 50px;
+				left: 40%;
+				top: 60%;
+				animation-delay: 3s;
+				animation-duration: 22s;
+			}
+			.particle:nth-child(5) {
+				width: 90px;
+				height: 90px;
+				left: 50%;
+				top: 40%;
+				animation-delay: 4s;
+				animation-duration: 19s;
+			}
+			.particle:nth-child(6) {
+				width: 40px;
+				height: 40px;
+				left: 60%;
+				top: 80%;
+				animation-delay: 5s;
+				animation-duration: 21s;
+			}
+			.particle:nth-child(7) {
+				width: 55px;
+				height: 55px;
+				left: 70%;
+				top: 50%;
+				animation-delay: 6s;
+				animation-duration: 23s;
+			}
+			.particle:nth-child(8) {
+				width: 75px;
+				height: 75px;
+				left: 80%;
+				top: 25%;
+				animation-delay: 7s;
+				animation-duration: 17s;
+			}
+			.particle:nth-child(9) {
+				width: 45px;
+				height: 45px;
+				left: 90%;
+				top: 70%;
+				animation-delay: 8s;
+				animation-duration: 24s;
+			}
+			.particle:nth-child(10) {
+				width: 65px;
+				height: 65px;
+				left: 15%;
+				top: 45%;
+				animation-delay: 9s;
+				animation-duration: 20s;
+			}
+			.particle:nth-child(11) {
+				width: 85px;
+				height: 85px;
+				left: 25%;
+				top: 15%;
+				animation-delay: 10s;
+				animation-duration: 25s;
+			}
+			.particle:nth-child(12) {
+				width: 50px;
+				height: 50px;
+				left: 35%;
+				top: 85%;
+				animation-delay: 11s;
+				animation-duration: 18s;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+
+			@keyframes slideIn {
+				from {
+					transform: translateY(50px);
+					opacity: 0;
+				}
+				to {
+					transform: translateY(0);
+					opacity: 1;
+				}
+			}
+
+			@keyframes pulse {
+				0% {
+					transform: scale(1);
+				}
+				50% {
+					transform: scale(1.05);
+				}
+				100% {
+					transform: scale(1);
+				}
+			}
+
+			/* Header & Navigation */
+			header {
+				background: var(--wrapper-color-dark);
+				padding: 20px;
+				box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+				animation: slideIn 0.5s ease-out;
+				position: relative;
+				z-index: 1;
+			}
+
+			nav {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				max-width: 1200px;
+				margin: auto;
+			}
+
+			nav a {
+				color: var(--text-color-dark);
+				text-decoration: none;
+				font-size: 18px;
+				font-weight: bold;
+				margin: 0 15px;
+				transition: all 0.3s ease;
+				position: relative;
+			}
+
+			nav a:hover {
+				color: var(--text-color-light);
+			}
+
+			nav a::after {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 2px;
+				bottom: -5px;
+				left: 0;
+				background-color: var(--text-color-light);
+				transition: width 0.3s ease;
+			}
+
+			nav a:hover::after {
+				width: 100%;
+			}
+
+			.logo {
+				font-family: 'IBM Plex Sans', sans-serif;
+				font-size: 32px;
+				font-weight: bold;
+				color: var(--heading-color-dark);
+				text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+				animation: pulse 2s infinite;
+			}
+
+			main {
+				padding: 40px 20px;
+				min-height: calc(100vh - 160px);
+				position: relative;
+				z-index: 1;
+			}
+
+			.wrapper {
+				background-color: var(--wrapper-color-dark);
+				border-radius: 15px;
+				padding: 30px;
+				margin: auto;
+				max-width: 1200px;
+				box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.6);
+				text-align: center;
+				transition: transform 0.5s ease, box-shadow 0.5s ease;
+				animation: slideIn 1s ease-out;
+				position: relative;
+				z-index: 1;
+			}
+
+			.wrapper:hover {
+				box-shadow: 0px 8px 30px rgba(215, 96, 69, 0.3);
+			}
+
+			h1 {
+				font-family: 'IBM Plex Sans', sans-serif;
+				font-size: 60px;
+				font-weight: bold;
+				margin: 20px 0;
+				color: var(--heading-color-dark);
+				text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+				animation: slideIn 1.2s ease-out;
+			}
+
+			.button-container {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 30px;
+				padding: 20px;
+				animation: slideIn 1.5s ease-out;
+			}
+
+			.animated-button {
+				background-color: var(--button-color-dark);
+				color: var(--text-color-dark);
+				border: none;
+				width: 300px;
+				height: 200px;
+				font-size: 32px;
+				font-weight: bold;
+				cursor: pointer;
+				border-radius: 20px;
+				box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+				transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 15px;
+				text-decoration: none;
+				overflow: hidden;
+				position: relative;
+			}
+
+			.animated-button::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					90deg,
+					transparent,
+					rgba(255, 255, 255, 0.2),
+					transparent
+				);
+				transition: 0.5s;
+			}
+
+			.animated-button:hover {
+				background-color: var(--button-hover-dark);
+				transform: translateY(-15px) scale(1.05);
+				box-shadow: 0px 15px 25px rgba(185, 78, 57, 0.4);
+			}
+
+			.animated-button:hover::before {
+				left: 100%;
+			}
+
+			.animated-button:active {
+				transform: scale(0.95);
+				box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+			}
+
+			.icon {
+				font-size: 50px;
+				color: var(--text-color-dark);
+				transition: transform 0.3s ease;
+			}
+
+			.animated-button:hover .icon {
+				transform: scale(1.2);
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Background Particles -->
+		<div class="particles">
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+		</div>
+
+		<!-- Header with Navigation -->
+		<header>
+			<nav>
+				<a href="main.html" class="logo-link">
+					<div class="logo">P.A.L.</div>
+				</a>
+				<div class="nav-links">
+					<a href="physics.html">Physics</a>
+					<a href="algebra.html">Algebra</a>
+					<a href="arithmetic.html">Arithmetics</a>
+					<a href="statistics.html">Statistics</a>
+					<a href="mental%20ability.html">Mental Ability</a>
+					<a href="geometry.html">Geometry</a>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Main Content -->
+		<main>
+			<section class="hero">
+				<div class="wrapper">
+					<h1>Welcome to P.A.L</h1>
+					<div class="button-container">
+						<a href="physics.html" class="animated-button">
+							<div class="icon">⚛️</div>
+							<div>Physics</div>
+						</a>
+						<a href="algebra.html" class="animated-button">
+							<div class="icon">🧮</div>
+							<div>Algebra</div>
+						</a>
+						<a href="arithmetic.html" class="animated-button">
+							<div class="icon">➕</div>
+							<div>Arithmetics</div>
+						</a>
+						<a href="statistics.html" class="animated-button">
+							<div class="icon">∫</div>
+							<div>Statistics</div>
+						</a>
+						<a href="mental-ability.html" class="animated-button">
+							<div class="icon">🧠</div>
+							<div>Mental Ability</div>
+						</a>
+						<a href="geometry.html" class="animated-button">
+							<div class="icon">📐</div>
+							<div>Geometry</div>
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

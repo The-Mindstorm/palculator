@@ -1,0 +1,521 @@
+body {
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(-45deg, #181a20, #23242a, #001c2c, #d76045);
+    color: #fff;
+    min-height: 100vh;
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #23242a;
+    padding: 20px 0 25px 0;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.5s ease-out;
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    margin-top: 25px;
+    margin-bottom: 0;
+    position: relative;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+header h1::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background-color: #d76045;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.about-physics,
+.calculator-container {
+    background: #232323;
+    border-radius: 16px;
+    padding: 32px 28px;
+    max-width: 700px;
+    width: 90%;
+    margin: 32px 0 0 0;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
+}
+
+.about-physics h2,
+.calculator-container h2 {
+    color: #7ecfff;
+    margin-top: 0;
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.about-physics p {
+    color: #e0e0e0;
+    font-size: 1.15em;
+    margin-bottom: 0.7em;
+}
+
+select#calculators {
+    width: 100%;
+    padding: 12px;
+    border-radius: 7px;
+    border: 1px solid #444;
+    background: #181818;
+    color: #fff;
+    margin-bottom: 24px;
+    font-size: 1.1em;
+    transition: border 0.2s;
+}
+
+select#calculators:focus {
+    border: 1.5px solid #7ecfff;
+    outline: none;
+}
+
+.calculator {
+    background: #24262e;
+    border-radius: 12px;
+    padding: 28px 20px 20px 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.calculator h3 {
+    margin-top: 0;
+    color: #d76045;
+    font-size: 1.3em;
+    margin-bottom: 18px;
+}
+
+#calculator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#calculator-form label {
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #b0b0b0;
+}
+
+#calculator-form input {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #181818;
+    color: #fff;
+    font-size: 1em;
+    transition: border 0.2s;
+}
+
+#calculator-form input:focus {
+    border: 1.5px solid #7ecfff;
+    outline: none;
+}
+
+#calculator-form button {
+    margin-top: 10px;
+    padding: 12px 0;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #d76045 60%, #7ecfff 100%);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#calculator-form button:hover {
+    background: linear-gradient(90deg, #b94e39 60%, #5ebbe7 100%);
+}
+
+#result {
+    margin-top: 18px;
+    font-size: 1.15em;
+    color: #7ecfff;
+    min-height: 1.2em;
+}
+
+#mechanics-dropdown,
+#thermodynamics-dropdown,
+#variable-dropdown {
+    width: 100%;
+    padding: 14px 12px;
+    border-radius: 8px;
+    background: #181a20;
+    color: #fff;
+    margin-bottom: 24px;
+    font-size: 1.1em;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+#mechanics-dropdown,
+#thermodynamics-dropdown {
+    border: 1.5px solid #d76045;
+    box-shadow: 0 2px 8px rgba(215, 96, 69, 0.08);
+}
+
+#variable-dropdown {
+    border: 1.5px solid #7ecfff;
+    box-shadow: 0 2px 8px rgba(126, 207, 255, 0.08);
+}
+
+#mechanics-dropdown:focus,
+#thermodynamics-dropdown:focus {
+    border: 2px solid #7ecfff;
+    outline: none;
+    box-shadow: 0 0 0 2px #7ecfff33;
+}
+
+#variable-dropdown:focus {
+    border: 2px solid #d76045;
+    outline: none;
+    box-shadow: 0 0 0 2px #d7604533;
+}
+
+#mechanics-dropdown option,
+#thermodynamics-dropdown option,
+#variable-dropdown option {
+    background: #23242a;
+    color: #fff;
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.logo-link {
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a:hover {
+    color: #d76045;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #d76045;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav a {
+        margin: 5px 10px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-physics,
+    .calculator-container {
+        padding: 18px 6px;
+    }
+    .calculator {
+        padding: 14px 4px 12px 4px;
+    }
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Enhanced Dropdown Styling */
+select#calculators,
+#mechanics-dropdown,
+#thermodynamics-dropdown,
+#electromagnetism-dropdown,
+#variable-dropdown,
+#wave-optics-dropdown {
+    width: 100%;
+    padding: 14px 45px 14px 18px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: linear-gradient(
+            120deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(126, 207, 255, 0.1)
+        ),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23d76045' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center, right 15px center;
+    background-size: 100%, 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease, transform 0.2s ease;
+    letter-spacing: 0.3px;
+    border: 2px solid rgba(126, 207, 255, 0.15);
+    color: #e0e0e0;
+}
+
+select#calculators {
+    background-color: rgba(40, 42, 54, 0.8);
+    background-image: linear-gradient(
+            135deg,
+            rgba(215, 96, 69, 0.1),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23d76045' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    border-color: rgba(215, 96, 69, 0.3);
+}
+
+#mechanics-dropdown,
+#thermodynamics-dropdown,
+#electromagnetism-dropdown,
+#wave-optics-dropdown {
+    background-color: rgba(30, 32, 44, 0.9);
+    border-color: rgba(215, 96, 69, 0.3);
+}
+
+#variable-dropdown {
+    background-color: rgba(25, 28, 40, 0.9);
+    border-color: rgba(126, 207, 255, 0.3);
+}
+
+/* Hover states */
+select#calculators:hover,
+#mechanics-dropdown:hover,
+#thermodynamics-dropdown:hover,
+#electromagnetism-dropdown:hover,
+#wave-optics-dropdown:hover,
+#variable-dropdown:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Focus states */
+select#calculators:focus,
+#mechanics-dropdown:focus,
+#thermodynamics-dropdown:focus,
+#electromagnetism-dropdown:focus,
+#wave-optics-dropdown:focus {
+    outline: none;
+    border-color: rgba(215, 96, 69, 0.8);
+    box-shadow: 0 0 0 3px rgba(215, 96, 69, 0.25),
+        0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#variable-dropdown:focus {
+    outline: none;
+    border-color: rgba(126, 207, 255, 0.8);
+    box-shadow: 0 0 0 3px rgba(126, 207, 255, 0.25),
+        0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Option Styling */
+select option {
+    background-color: #1e2029;
+    color: #e0e0e0;
+    padding: 12px 18px;
+    font-weight: 500;
+    font-size: 1.05em;
+    border-bottom: 1px solid rgba(126, 207, 255, 0.1);
+    cursor: pointer;
+}
+
+select option:hover,
+select option:focus {
+    background-color: #2a2d3a !important;
+    color: #fff !important;
+}
+
+select option:checked {
+    background: linear-gradient(90deg, rgba(215, 96, 69, 0.2), transparent);
+    color: #7ecfff;
+    font-weight: 600;
+}
+
+/* Custom styled scrollbar for browsers that support it */
+select {
+    appearance: none;
+    background-color: rgba(35, 36, 42, 0.9);
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    border: 2px solid rgba(126, 207, 255, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: white;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 12px 40px 12px 15px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+select::-webkit-scrollbar {
+    width: 8px;
+}
+
+select::-webkit-scrollbar-track {
+    background: #1e2029;
+}
+
+select::-webkit-scrollbar-thumb {
+    background-color: #d76045;
+    border-radius: 10px;
+    border: 2px solid #1e2029;
+}
+
+/* Give select a defined height when opened (works in some browsers) */
+select[multiple],
+select.open {
+    height: auto;
+    max-height: 300px;
+    overflow-y: auto;
+}
+/*.header-divider {
+    width: 85%;
+    height: 2px;
+    margin: 15px auto;
+    background: linear-gradient(90deg, transparent, rgba(215, 96, 69, 0.8), transparent);
+}*/
+
+/* Add this to your physics-style.css file */
+header nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px 15px 20px;
+    border-bottom: 1px solid rgba(215, 96, 69, 0.6);
+}
+
+/* Formula display styling */
+#formula-display {
+    background-color: rgba(45, 46, 52, 0.8);
+    border-left: 4px solid #7ecfff;
+    border-radius: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    margin: 15px 0;
+    padding: 12px 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+#formula-display:not(:empty) {
+    animation: glow 2s ease-in-out infinite alternate;
+}

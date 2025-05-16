@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Ability Trainer</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'IBM Plex Sans', Arial, sans-serif;
+            margin: 0;
+            background-color: #001c2c;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 2rem;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 700px;
+            background-color: rgba(45, 55, 72, 0.8);
+            border: 2px solid #7e57c2;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+            position: relative; /* For z-index context */
+            z-index: 1;
+        }
+
+        .definitions-container {
+            width: 90%;
+            max-width: 900px;
+            background-color: rgba(45, 55, 72, 0.8);
+            border: 2px solid #7e57c2;
+            border-radius: 0.5rem;
+            padding: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #d4d8b1;
+            font-size: 2rem;
+        }
+
+        p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        #quiz-section {
+            display: none;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #question-container {
+            text-align: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        #answer-input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 1px solid #d4d8b1;
+            border-radius: 0.375rem;
+            box-sizing: border-box;
+            background-color: #f0f4c3;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+
+        #start-button,
+        #submit-button {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            background-color: #7e57c2;
+            color: #fff;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            margin-bottom: 0.75rem;
+        }
+
+        #start-button:hover,
+        #submit-button:hover {
+            background-color: #9c27b0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            transform: scale(1.05);
+        }
+
+        #feedback {
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <div class="definitions-container">
+        <h2>Understanding Mental Ability Concepts</h2>
+        <p><b>Pattern Recognition:</b> This involves identifying regularities, trends, or sequences in visual, numerical, or
+            abstract information. It's the ability to see relationships and predict what comes next based on observed
+            patterns.</p>
+        <p><b>Relational Reasoning:</b> This focuses on understanding the connections and associations between different
+            pieces of information. It includes skills like analogies, identifying similarities and differences, and
+            understanding logical relationships.</p>
+        <button id="start-button">Start Quiz</button>
+    </div>
+
+    <div id="quiz-section" class="container">
+        <div id="question-container"></div>
+        <input type="text" id="answer-input" placeholder="Enter your answer">
+        <button id="submit-button">Submit</button>
+        <div id="feedback"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        function initParticles() {
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#7ecfff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        },
+                        "image": {
+                            "src": "",
+                            "width": 100,
+                            "height": 100
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.3,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 4,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": false,
+                        "distance": 150,
+                        "color": "#ffffff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1.5,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "events": {
+                        "onhover": {
+                            "enable": false,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": false,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        }
+
+        window.onload = function() {
+            initParticles();
+
+            const startButton = document.getElementById('start-button');
+            const quizSection = document.getElementById('quiz-section');
+            const questionContainer = document.getElementById('question-container');
+            const answerInput = document.getElementById('answer-input');
+            const submitButton = document.getElementById('submit-button');
+            const feedback = document.getElementById('feedback');
+
+            let questions = [
+                { question: "What is the next number in the sequence: 3, 8, 15, 24, ?", answer: 35 },
+                { question: "Complete the analogy: Architect is to Blueprint as Chef is to ?", answer: "Recipe" },
+                { question: "Find the missing letter: B, E, H, K, ?", answer: "N" },
+                { question: "Which number does not belong: 17, 23, 29, 33, 37", answer: 33 },
+                { question: "Identify the relationship: Glove : Hand :: Sock : ?", answer: "Foot" },
+                { question: "Continue the series: AZ, BY, CX, DW, ?", answer: "EV" },
+                { question: "What comes next: Triangle, Square, Pentagon, Hexagon, ?", answer: "Heptagon" },
+                { question: "Complete the pair: Up : Down :: East : ?", answer: "West" },
+                { question: "Find the missing number: 2, 3, 5, 7, 11, ?", answer: 13 },
+                { question: "Complete the analogy: Book is to Knowledge as Map is to ?", answer: "Direction" },
+                { question: "What is the next letter in the sequence: Z, W, T, Q, ?", answer: "N" },
+                { question: "Which shape doesn't fit: Circle, Oval, Sphere, Ellipse", answer: "Sphere" }
+            ];
+
+            let currentQuestionIndex = 0;
+
+            startButton.addEventListener('click', function () {
+                document.querySelector('.definitions-container').style.display = 'none';
+                quizSection.style.display = 'flex';
+                displayQuestion();
+            });
+
+            function displayQuestion() {
+                questionContainer.textContent = questions[currentQuestionIndex].question;
+                answerInput.value = '';
+                feedback.textContent = '';
+            }
+
+            function checkAnswer() {
+                const userAnswer = answerInput.value.trim();
+                const correctAnswer = String(questions[currentQuestionIndex].answer).trim().toLowerCase();
+
+                if (userAnswer.toLowerCase() === correctAnswer) {
+                    feedback.textContent = "Correct!";
+                    feedback.style.color = "green";
+                } else {
+                    feedback.textContent = `Incorrect. The correct answer is ${questions[currentQuestionIndex].answer}.`;
+                    feedback.style.color = "red";
+                }
+
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    setTimeout(displayQuestion, 2000);
+                } else {
+                    questionContainer.textContent = "Quiz completed!";
+                    answerInput.style.display = 'none';
+                    submitButton.style.display = 'none';
+                }
+            }
+
+            submitButton.addEventListener('click', checkAnswer);
+            answerInput.addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    checkAnswer();
+                }
+            });
+        };
+    </script>
+</body>
+
+</html>
