@@ -1,0 +1,262 @@
+/* Black, purple, and pink theme - no glow, natural look */
+body {
+    background: linear-gradient(135deg, #0a0612 0%, #1a1333 60%, #2d1e4a 100%);
+    color: #f3e6fa;
+    font-family: "IBM Plex Mono", monospace;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Geometric background decorations */
+.geo-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hexagon {
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    width: 120px;
+    height: 69.28px;
+    background: #e040fb33;
+    clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
+    filter: blur(1px);
+    animation: float 8s ease-in-out infinite;
+}
+
+.triangle {
+    position: absolute;
+    bottom: 10%;
+    right: 8%;
+    width: 0;
+    height: 0;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 140px solid #ff80ab33;
+    opacity: 0.7;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+.circle {
+    position: absolute;
+    top: 60%;
+    left: 70%;
+    width: 90px;
+    height: 90px;
+    background: #ea80fc33;
+    opacity: 0.18;
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: float 12s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Main container and card */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 420px;
+    margin: 60px auto 40px auto;
+    background: rgba(20, 10, 30, 0.98);
+    border-radius: 20px;
+    box-shadow: 0 4px 16px 0 rgba(20, 10, 30, 0.18);
+    padding: 36px 32px 28px 32px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.geo-title {
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 2.2rem;
+    /* No text-shadow for natural look */
+}
+
+.subtitle {
+    color: #fffc50;
+    font-size: 1.1rem;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.card {
+    background: rgba(34, 22, 58, 0.93);
+    border-radius: 16px;
+    box-shadow: 0 1px 4px 0 #1a133344;
+    padding: 28px 20px 20px 20px;
+    margin-top: 12px;
+}
+
+label {
+    color: #ea80fc;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 16px;
+}
+
+select, input {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    border: 1.5px solid #ff80ab;
+    background: #1a1333;
+    color: #f3e6fa;
+    transition: border 0.2s, background 0.2s;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: #ea80fc;
+    background: #2d1e4a;
+}
+
+button {
+    width: 100%;
+    background: linear-gradient(90deg, #ea80fc 0%, #e040fb 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    /* No box-shadow for natural look */
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #e040fb 0%, #ff80ab 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.result {
+    margin-top: 18px;
+    padding: 14px;
+    background: #2d1e4a;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.08rem;
+    min-height: 28px;
+    box-shadow: none;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    color: #ff80ab;
+    font-size: 0.95rem;
+    margin: 32px 0 12px 0;
+    z-index: 1;
+    position: relative;
+}
+
+/* Placeholder styling */
+::placeholder {
+    color: #ea80fc;
+    opacity: 1;
+}
+
+/* ...existing code... */
+
+.triangle-animate {
+    position: fixed;
+    width: 0;
+    height: 0;
+    opacity: 0.7;
+    z-index: 0;
+    pointer-events: none;
+    animation: triangle-down 8s linear infinite;
+}
+
+/* Small triangles */
+.triangle-animate.small {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 14px solid #ff80ab55;
+}
+
+.triangle-animate.small.reverse {
+    border-bottom: none;
+    border-top: 14px solid #ea80fc55;
+}
+
+/* Medium triangles (default) */
+.triangle-animate.medium {
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 24px solid #ff80ab55;
+}
+
+.triangle-animate.medium.reverse {
+    border-bottom: none;
+    border-top: 24px solid #ea80fc55;
+}
+
+/* Large triangles */
+.triangle-animate.large {
+    border-left: 22px solid transparent;
+    border-right: 22px solid transparent;
+    border-bottom: 38px solid #ff80ab55;
+}
+
+.triangle-animate.large.reverse {
+    border-bottom: none;
+    border-top: 38px solid #ea80fc55;
+}
+
+.triangle-animate.reverse {
+    top: auto;
+    bottom: 0;
+    animation: triangle-up 10s linear infinite;
+}
+
+/* ...existing code... */
+
+.triangle-animate.t1 { left: 10vw; animation-delay: 0s; }
+.triangle-animate.t2 { left: 22vw; animation-delay: 1.5s; }
+.triangle-animate.t3 { left: 34vw; animation-delay: 3s; }
+.triangle-animate.t4 { left: 46vw; animation-delay: 2s; }
+.triangle-animate.t5 { left: 58vw; animation-delay: 4s; }
+.triangle-animate.t6 { left: 70vw; animation-delay: 2.5s; }
+.triangle-animate.t7 { left: 82vw; animation-delay: 5s; }
+.triangle-animate.t8 { left: 16vw; animation-delay: 2.2s; }
+.triangle-animate.t9 { left: 55vw; animation-delay: 0.8s; }
+.triangle-animate.t10 { left: 75vw; animation-delay: 3.7s; }
+
+/* ...existing code... */
+
+/* ...existing code... */
+
+
+@keyframes triangle-down {
+    0% { top: -80px; opacity: 0.7; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100vh; opacity: 0.2; }
+}
+
+@keyframes triangle-up {
+    0% { bottom: -80px; opacity: 0.7; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { bottom: 100vh; opacity: 0.2; }
+}
+
+/* ...existing code... */
