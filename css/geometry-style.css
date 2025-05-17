@@ -260,3 +260,151 @@ footer {
 }
 
 /* ...existing code... */
+/* --- NAVIGATION BAR & HEADER --- */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1a1333;
+    padding: 20px 0 25px 0;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1;
+}
+
+header nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.logo-link {
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.logo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ea80fc;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(234,128,252,0.15);
+    padding: 2px 12px;
+    border-radius: 8px;
+    background: #23163a;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    color: #f3e6fa;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 15px;
+    transition: color 0.3s, border-bottom 0.3s;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    color: #ff80ab;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #ea80fc;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+    width: 100%;
+}
+
+.header-divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #ea80fc 0%, #ff80ab 100%);
+    margin: 18px 0 10px 0;
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+header h1 {
+    margin-top: 25px;
+    margin-bottom: 0;
+    position: relative;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    color: #ea80fc;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 800;
+    text-align: center;
+}
+
+header h1::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background-color: #ff80ab;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    header nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 8px;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .logo {
+        margin-bottom: 8px;
+    }
+    header h1 {
+        font-size: 1.7rem;
+    }
+}
+header h1 {
+    margin-top: 25px;
+    margin-bottom: 0;
+    position: relative;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    color: #ea80fc;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 800;
+    text-align: center;
+    display: block;
+    line-height: 1.2;
+    /* Add this to force "Geometry" onto its own line if needed */
+    white-space: pre-line;
+}
+
+/* ...existing code... */
