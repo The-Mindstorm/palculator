@@ -239,6 +239,20 @@ footer {
 .triangle-animate.t8 { left: 16vw; animation-delay: 2.2s; }
 .triangle-animate.t9 { left: 55vw; animation-delay: 0.8s; }
 .triangle-animate.t10 { left: 75vw; animation-delay: 3.7s; }
+/* ...existing code... */
+
+.triangle-animate.t11 { left: 12vw; animation-delay: 1.2s; }
+.triangle-animate.t12 { left: 28vw; animation-delay: 2.7s; }
+.triangle-animate.t13 { left: 38vw; animation-delay: 4.1s; }
+.triangle-animate.t14 { left: 52vw; animation-delay: 1.9s; }
+.triangle-animate.t15 { left: 63vw; animation-delay: 3.3s; }
+.triangle-animate.t16 { left: 77vw; animation-delay: 5.2s; }
+.triangle-animate.t17 { left: 19vw; animation-delay: 2.1s; }
+.triangle-animate.t18 { left: 47vw; animation-delay: 0.6s; }
+.triangle-animate.t19 { left: 68vw; animation-delay: 3.9s; }
+.triangle-animate.t20 { left: 85vw; animation-delay: 1.5s; }
+
+/* ...existing code... */
 
 /* ...existing code... */
 
@@ -405,6 +419,106 @@ header h1 {
     line-height: 1.2;
     /* Add this to force "Geometry" onto its own line if needed */
     white-space: pre-line;
+}
+
+/* ...existing code... */
+
+/* Kite shapes for animated background */
+.kite-animate {
+    position: fixed;
+    width: 32px;
+    height: 48px;
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, #ea80fc 60%, #ff80ab 100%);
+    clip-path: polygon(50% 0%, 100% 40%, 50% 100%, 0% 40%);
+    animation: kite-down 12s linear infinite;
+}
+
+.kite-animate.reverse {
+    background: linear-gradient(135deg, #ff80ab 60%, #ea80fc 100%);
+    animation: kite-up 14s linear infinite;
+    top: auto;
+    bottom: 0;
+}
+
+.kite-animate.k1 { left: 18vw; animation-delay: 0.5s; }
+.kite-animate.k2 { left: 42vw; animation-delay: 3s; }
+.kite-animate.k3 { left: 67vw; animation-delay: 6s; }
+.kite-animate.k4 { left: 30vw; animation-delay: 2s; }
+.kite-animate.k5 { left: 80vw; animation-delay: 7s; }
+.kite-animate.k6 { left: 55vw; animation-delay: 4.5s; }
+.kite-animate.k7 { left: 25vw; animation-delay: 1.7s; }
+.kite-animate.k8 { left: 73vw; animation-delay: 5.2s; }
+
+@keyframes kite-down {
+    0% { top: -60px; opacity: 0.5; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { top: 100vh; opacity: 0.1; }
+}
+
+@keyframes kite-up {
+    0% { bottom: -60px; opacity: 0.5; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { bottom: 100vh; opacity: 0.1; }
+}
+
+/* ...existing code... */
+
+/* Rhombus shapes for animated background */
+.rhombus-animate {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    opacity: 0.45;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, #ff80ab 60%, #ea80fc 100%);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation: rhombus-down 13s linear infinite;
+}
+
+.rhombus-animate.reverse {
+    background: linear-gradient(135deg, #ea80fc 60%, #ff80ab 100%);
+    animation: rhombus-up 15s linear infinite;
+    top: auto;
+    bottom: 0;
+}
+
+.rhombus-animate.r1 { left: 8vw; animation-delay: 0.8s; }
+.rhombus-animate.r2 { left: 26vw; animation-delay: 2.3s; }
+.rhombus-animate.r3 { left: 39vw; animation-delay: 4.7s; }
+.rhombus-animate.r4 { left: 53vw; animation-delay: 1.5s; }
+.rhombus-animate.r5 { left: 66vw; animation-delay: 3.8s; }
+.rhombus-animate.r6 { left: 78vw; animation-delay: 6.1s; }
+.rhombus-animate.r7 { left: 90vw; animation-delay: 5.3s; }
+.rhombus-animate.r8 { left: 15vw; animation-delay: 2.9s; }
+
+@keyframes rhombus-down {
+    0% { top: -50px; opacity: 0.45; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.7; }
+    100% { top: 100vh; opacity: 0.1; }
+}
+
+@keyframes rhombus-up {
+    0% { bottom: -50px; opacity: 0.45; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.7; }
+    100% { bottom: 100vh; opacity: 0.1; }
+}
+
+/* --- Proper Spacing for All Animated Shapes --- */
+.triangle-animate,
+.kite-animate,
+.rhombus-animate {
+    /* Ensures shapes don't overlap vertically */
+    margin-top: 0;
+    margin-bottom: 0;
+    /* No horizontal margin, spacing is controlled by left property */
 }
 
 /* ...existing code... */
