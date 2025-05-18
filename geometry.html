@@ -10,6 +10,7 @@
         <div class="hexagon"></div>
         <div class="triangle"></div>
         <div class="circle"></div>
+        <div class="triangle-top-left"></div>
     </div>
     <!-- Add after .geo-bg -->
     <div class="triangle-animate small t1"></div>
@@ -59,7 +60,7 @@
                 <a href="algebra.html">Algebra</a>
                 <a href="arithmetic.html">Arithmetic</a>
                 <a href="statistics.html">Statistics</a>
-                <a href="mental%20ability.html">Mental Ability</a>
+                <a href="mental-ability.html">Mental Ability</a>
                 <a href="geometry.html">Geometry</a>
             </div>
         </nav>
@@ -69,6 +70,13 @@
     <main class="container"> 
         <section class="card">
             <form id="geometry-form">
+                <label for="category">Choose a category:</label>
+                <select name="category" id="category">
+                    <option value="2d">2d</option>
+                    <option value="3d">3d</option>
+                    <option value="trigonometry">Trigonometry</option>
+                    <option value="coordinate">Coordinate Geometry</option>
+                </select>
                 <label for="shape">Choose a shape:</label>
                 <select id="shape" name="shape">
                     <option value="circle">Circle</option>

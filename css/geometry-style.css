@@ -522,3 +522,14 @@ header h1 {
 }
 
 /* ...existing code... */
+.geo-bg .triangle.top-left {
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    width: 0;
+    height: 0;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 140px solid #ff80ab33;
+    opacity: 0.7;
+}
