@@ -67,7 +67,7 @@ body {
     z-index: 1;
     max-width: 420px;
     margin: 60px auto 40px auto;
-    background: rgba(20, 10, 30, 0.98);
+    background: transparent;
     border-radius: 20px;
     box-shadow: 0 4px 16px 0 rgba(20, 10, 30, 0.18);
     padding: 36px 32px 28px 32px;
@@ -532,4 +532,69 @@ header h1 {
     border-right: 80px solid transparent;
     border-bottom: 140px solid #ff80ab33;
     opacity: 0.7;
+}
+.geometry-flex {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 32px;
+}
+
+.card {
+    flex: 1 1 320px;
+    min-width: 260px;
+}
+
+@media (max-width: 900px) {
+    .geometry-flex {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+.geometry-flex {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 32px;
+}
+
+.card {
+    flex: 1 1 320px;
+    min-width: 260px;
+}
+
+aside {
+    background: #23163a;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(234,128,252,0.10);
+    padding: 24px 20px 20px 20px;
+    min-width: 340px;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #ea80fc44;
+}
+
+@media (max-width: 900px) {
+    .geometry-flex {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+.polygon-bg-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+#polygonCanvas {
+    display: block;
+    pointer-events: none;
 }

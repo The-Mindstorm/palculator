@@ -6,50 +6,9 @@
     <link rel="stylesheet" href="css/geometry-style.css">
 </head>
 <body>
-    <div class="geo-bg">
-        <div class="hexagon"></div>
-        <div class="triangle"></div>
-        <div class="circle"></div>
-        <div class="triangle-top-left"></div>
+    <div class="polygon-bg-canvas">
+        <canvas id="polygonCanvas"></canvas>
     </div>
-    <!-- Add after .geo-bg -->
-    <div class="triangle-animate small t1"></div>
-    <div class="triangle-animate medium t2"></div>
-    <div class="triangle-animate large t3"></div>
-    <div class="triangle-animate small t4 reverse"></div>
-    <div class="triangle-animate large t5 reverse"></div>
-    <div class="triangle-animate medium t6"></div>
-    <div class="triangle-animate small t7 reverse"></div>
-    <div class="triangle-animate large t8"></div>
-    <div class="triangle-animate medium t9 reverse"></div>
-    <div class="triangle-animate small t10"></div>
-    <!-- Additional triangles for more visual interest -->
-    <div class="triangle-animate medium t11"></div>
-    <div class="triangle-animate small t12 reverse"></div>
-    <div class="triangle-animate large t13"></div>
-    <div class="triangle-animate small t14"></div>
-    <div class="triangle-animate medium t15 reverse"></div>
-    <div class="triangle-animate large t16 reverse"></div>
-    <div class="triangle-animate small t17"></div>
-    <div class="triangle-animate medium t18"></div>
-    <div class="triangle-animate large t19 reverse"></div>
-    <div class="triangle-animate small t20"></div>
-    <div class="kite-animate k1"></div>
-    <div class="kite-animate k2 reverse"></div>
-    <div class="kite-animate k3"></div>
-    <div class="kite-animate k4 reverse"></div>
-    <div class="kite-animate k5"></div>
-    <div class="kite-animate k6 reverse"></div>
-    <div class="kite-animate k7"></div>
-    <div class="kite-animate k8 reverse"></div>
-    <div class="rhombus-animate r1"></div>
-    <div class="rhombus-animate r2 reverse"></div>
-    <div class="rhombus-animate r3"></div>
-    <div class="rhombus-animate r4 reverse"></div>
-    <div class="rhombus-animate r5"></div>
-    <div class="rhombus-animate r6 reverse"></div>
-    <div class="rhombus-animate r7"></div>
-    <div class="rhombus-animate r8 reverse"></div>
     <header>
         <nav>
             <a href="index.html" class="logo-link">
@@ -72,8 +31,16 @@
             <form id="geometry-form">
                 <label for="category">Choose a category:</label>
                 <select name="category" id="category">
-                    <option value="2d">2d</option>
-                    <option value="3d">3d</option>
+                    <option value="2d">2D Shapes</option>
+                    <option value="3d">3D Shapes</option>
+                    <option value="euclidean">Euclidean Geometry</option>
+                    <option value="non_euclidean">Non-Euclidean Geometry</option>
+                    <option value="differential">Differential Geometry</option>
+                    <option value="algebraic">Algebraic Equations</option>
+                    <option value="analytic">Analytic Geometry</option>
+                    <option value="computational">Computational Geometry</option>
+                    <option value="topology">Topology</option>
+                    <option value="fractal">Fractal Geometry</option>
                     <option value="trigonometry">Trigonometry</option>
                     <option value="coordinate">Coordinate Geometry</option>
                 </select>
@@ -93,6 +60,8 @@
             <div id="result" class="result"></div>
         </section>    
     </main>
+    <script src="js/trial.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/geometry-script.js"></script>
 </body>
 </html>
